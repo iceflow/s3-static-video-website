@@ -1,0 +1,33 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": [
+					"arn:aws-cn:iam::{AccountID}:user/{User}",
+					"arn:aws-cn:iam::{AccountID}:user/{User}"
+				]
+			},
+			"Action": "s3:*",
+			"Resource": [
+				"arn:aws-cn:s3:::reinvent",
+				"arn:aws-cn:s3:::reinvent/*"
+			]
+		},
+		{
+			"Sid": "",
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": [
+				"s3:Get*",
+				"s3:List*"
+			],
+			"Resource": [
+				"arn:aws-cn:s3:::reinvent/2015/*",
+				"arn:aws-cn:s3:::reinvent/2016/*"
+			]
+		}
+	]
+}
