@@ -12,8 +12,8 @@
 			},
 			"Action": "s3:*",
 			"Resource": [
-				"arn:aws-cn:s3:::reinvent",
-				"arn:aws-cn:s3:::reinvent/*"
+				"arn:aws-cn:s3:::{BucketName}",
+				"arn:aws-cn:s3:::{BucketName}/*"
 			]
 		},
 		{
@@ -25,8 +25,8 @@
 				"s3:List*"
 			],
 			"Resource": [
-				"arn:aws-cn:s3:::reinvent/2015/*",
-				"arn:aws-cn:s3:::reinvent/2016/*"
+				"arn:aws-cn:s3:::{BucketName}/2015/*",
+				"arn:aws-cn:s3:::{BucketName}/2016/*"
 			]
 		}
 	]

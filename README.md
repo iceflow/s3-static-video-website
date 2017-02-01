@@ -86,13 +86,13 @@ reinvent_bucket_policy.json: Bucket策略
   - 查看新页面
   
 ## [站点Sample](http://reinvent.s3-website.cn-north-1.amazonaws.com.cn)
-![站点Sample](https://s3.cn-north-1.amazonaws.com.cn/reinvent/docs/s3-directory-sample.png)
+![站点Sample](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/s3-directory-sample.png)
 
 ## S3静态站点配置
-![S3静态站点配置](https://s3.cn-north-1.amazonaws.com.cn/reinvent/docs/s3-static-website.png)
+![S3静态站点配置](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/s3-static-website.png)
 
 ## S3 Bucket目录结构
-![S3 Bucket目录结构](https://s3.cn-north-1.amazonaws.com.cn/reinvent/docs/website.png)
+![S3 Bucket目录结构](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/website.png)
 
 # 参考
 Boto3
