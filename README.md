@@ -7,23 +7,23 @@
   3. bootstrap web模版
 
 # 文件说明
-css/ fonts/ js/
+## css/ fonts/ js/
   - 静态html文件包含的目录
   
-make_index*.py: 重点参考最新 make_index_chinakb_2016.py
+## make_index*.py: 重点参考最新 make_index_chinakb_2016.py
   1. 使用python boto3
   2. 使用 aws configure 配置credential
   3. 遍历选定Bucket下的对象, 带过滤
   4. 生成下载文件列表 html-<tr>部分
   5. 遍历对象，增加 public read 权限
   
-upload*.sh： 重点参考最新 upload_chinakb_2016.sh 
+## upload*.sh： 重点参考最新 upload_chinakb_2016.sh 
   1. 运行 make_index*.py
   2. 合并生成index*.html
   3. 上传到目标bucket
  
  
-reinvent_bucket_policy.json: Bucket策略
+## reinvent_bucket_policy.json: Bucket策略
    - {AccountID}, {User}, {BucketName} 替换为实际内容
 ```Bash
 {
@@ -77,22 +77,20 @@ reinvent_bucket_policy.json: Bucket策略
     - PREFIX='reInvent2015/'
     - INDEX_FILE='index_2015.html.td'
   - 修改：def get_obj_info(key): 部分，根据具体的bucket内视频文件目录结构
- 
-
-  
+   
 # 使用流程
   - 周期或者触发上传新的视频内容到S3, 例如海外检测youtube频道内容，新增后上传
   - 中国本地，周期或者触发运行 ./upload_chinakb_2016.sh
   - 查看新页面
   
 ## [站点Sample](http://reinvent.s3-website.cn-north-1.amazonaws.com.cn)
-![站点Sample](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/s3-directory-sample.png)
+![站点Sample](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/website.png)
 
 ## S3静态站点配置
 ![S3静态站点配置](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/s3-static-website.png)
 
 ## S3 Bucket目录结构
-![S3 Bucket目录结构](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/website.png)
+![S3 Bucket目录结构](https://s3-ap-southeast-1.amazonaws.com/leoaws/s3-static-website/docs/s3-directory-sample.png)
 
 # 参考
 Boto3
