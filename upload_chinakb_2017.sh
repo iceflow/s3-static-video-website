@@ -15,15 +15,15 @@ cat ${TD} >> $INDEX
 cat index.html.tail >> $INDEX
 
 [ -f $INDEX ] && aws --profile $PROFILE s3 cp $INDEX s3://$D
+# Default
+[ -f $INDEX ] && aws --profile $PROFILE s3 cp $INDEX s3://$D/index.html
 
-PUBLIC_KEYS="$INDEX js/bootstrap.js js/bootstrap.min.js js/npm.js fonts/glyphicons-halflings-regular.eot fonts/glyphicons-halflings-regular.svg fonts/glyphicons-halflings-regular.ttf fonts/glyphicons-halflings-regular.woff fonts/glyphicons-halflings-regular.woff2 css/bootstrap-theme.css css/bootstrap-theme.css.map css/bootstrap-theme.min.css css/bootstrap.css css/bootstrap.css.map css/bootstrap.min.css"
+PUBLIC_KEYS="$INDEX index.html js/bootstrap.js js/bootstrap.min.js js/npm.js fonts/glyphicons-halflings-regular.eot fonts/glyphicons-halflings-regular.svg fonts/glyphicons-halflings-regular.ttf fonts/glyphicons-halflings-regular.woff fonts/glyphicons-halflings-regular.woff2 css/bootstrap-theme.css css/bootstrap-theme.css.map css/bootstrap-theme.min.css css/bootstrap.css css/bootstrap.css.map css/bootstrap.min.css"
 
 for KEY in ${PUBLIC_KEYS}; do
 	aws --profile $PROFILE s3api put-object-acl --bucket $D --key $KEY --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 done
 
-# Default
-[ -f $INDEX ] && aws --profile $PROFILE s3 cp $INDEX s3://$D/index.html
 
 
 exit 0

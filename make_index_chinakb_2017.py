@@ -38,14 +38,20 @@ def get_obj_info(key):
     info = {}
 
     sections = key.split('/')
+    #print("key=[len{}={}]".format(len(sections), key))
 
     if len(sections) < 3:
         return info
 
-    if 'NA' == sections[1]:
+    if sections[1] in ['reInvent2017']:
+        return {}
+
+    # Keynote tags
+    if 'AWS re -Invent 2017 Keynote' in key:
         info['category'] = 'Keynotes' 
     else:
-        info['category'] = sections[1].split('_')[1]
+        info['category'] = sections[1].split('_')[-1]
+
     info['name'] = sections[2]
 
     return info
