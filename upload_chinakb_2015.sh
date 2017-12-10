@@ -6,6 +6,7 @@
 D=reinvent
 TD=index_2015.html.td
 INDEX=index_2015.html
+PROFILE=chinakb
 
 ./make_index_chinakb_2015.py
 
@@ -13,10 +14,10 @@ cp index.html.head $INDEX
 cat ${TD} >> $INDEX
 cat index.html.tail >> $INDEX
 
-[ -f $INDEX ] && aws s3 cp $INDEX s3://$D
+[ -f $INDEX ] && aws --profile $PROFILE s3 cp $INDEX s3://$D
 
 PUBLIC_KEYS="$INDEX js/bootstrap.js js/bootstrap.min.js js/npm.js fonts/glyphicons-halflings-regular.eot fonts/glyphicons-halflings-regular.svg fonts/glyphicons-halflings-regular.ttf fonts/glyphicons-halflings-regular.woff fonts/glyphicons-halflings-regular.woff2 css/bootstrap-theme.css css/bootstrap-theme.css.map css/bootstrap-theme.min.css css/bootstrap.css css/bootstrap.css.map css/bootstrap.min.css"
 
 for KEY in ${PUBLIC_KEYS}; do
-	aws s3api put-object-acl --bucket $D --key $KEY --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
+	aws --profile $PROFILE s3api put-object-acl --bucket $D --key $KEY --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 done

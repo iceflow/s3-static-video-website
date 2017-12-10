@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # http://leopublic.s3-website.cn-north-1.amazonaws.com.cn
-# https://s3.cn-north-1.amazonaws.com.cn/leopublic/reInvent2016/Architecture/AWS+re_Invent+2016+_+(ARC302)+Running+Lean+Architectures_+Optimizing+for+Cost+Efficiency+-+YouTube+%5B720p%5D.mp4
+# https://s3.cn-north-1.amazonaws.com.cn/leopublic/reInvent2017/Architecture/AWS+re_Invent+2017+_+(ARC302)+Running+Lean+Architectures_+Optimizing+for+Cost+Efficiency+-+YouTube+%5B720p%5D.mp4
 
 D=reinvent
-TD=index_2016.html.td
-INDEX=index_2016.html
+TD=index_2017.html.td
+INDEX=index_2017.html
 PROFILE=chinakb
 
-./make_index_chinakb_2016.py
+./make_index_chinakb_2017.py
 
 cp index.html.head $INDEX
 cat ${TD} >> $INDEX
@@ -21,3 +21,9 @@ PUBLIC_KEYS="$INDEX js/bootstrap.js js/bootstrap.min.js js/npm.js fonts/glyphico
 for KEY in ${PUBLIC_KEYS}; do
 	aws --profile $PROFILE s3api put-object-acl --bucket $D --key $KEY --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 done
+
+# Default
+[ -f $INDEX ] && aws --profile $PROFILE s3 cp $INDEX s3://$D/index.html
+
+
+exit 0
