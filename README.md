@@ -10,17 +10,21 @@
 ## css/ fonts/ js/
   - 静态html文件包含的目录
   
-## make_index*.py: 重点参考最新 make_index_chinakb_2016.py
+## make_index*.py: 重点参考最新 make_index_chinakb_2017.py
   1. 使用python boto3
   2. 使用 aws configure 配置credential
   3. 遍历选定Bucket下的对象, 带过滤
   4. 生成下载文件列表 html-<tr>部分
   5. 遍历对象，增加 public read 权限
   
-## upload*.sh： 重点参考最新 upload_chinakb_2016.sh 
+## upload*.sh： 重点参考最新 upload_chinakb_2017.sh 
   1. 运行 make_index*.py
   2. 合并生成index*.html
   3. 上传到目标bucket
+
+## upload.sh
+  1. 遍历reinvent 目录是否有更新，如果有触发重构索引页
+     参考:  0 6 * * * /data/s3-static-video-website/upload.sh >> /var/log/s3-reinvent-upload.log
  
  
 ## reinvent_bucket_policy.json: Bucket策略
@@ -54,7 +58,7 @@
                         ],
                         "Resource": [
                                 "arn:aws-cn:s3:::{BucketName}/2015/*",
-                                "arn:aws-cn:s3:::{BucketName}/2016/*"
+                                "arn:aws-cn:s3:::{BucketName}/2017/*"
                         ]
                 }
         ]
@@ -80,7 +84,7 @@
    
 # 使用流程
   - 周期或者触发上传新的视频内容到S3, 例如海外检测youtube频道内容，新增后上传
-  - 中国本地，周期或者触发运行 ./upload_chinakb_2016.sh
+  - 中国本地，周期或者触发运行 ./upload_chinakb_2017.sh
   - 查看新页面
   
 ## [站点Sample](http://reinvent.s3-website.cn-north-1.amazonaws.com.cn)

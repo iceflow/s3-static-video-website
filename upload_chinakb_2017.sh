@@ -7,6 +7,18 @@ D=reinvent
 TD=index_2017.html.td
 INDEX=index_2017.html
 PROFILE=chinakb
+Y=2017
+
+# Need to modify to your working directory
+cd /data/s3-static-video-website
+
+# Check whether to refresh
+aws --profile $PROFILE s3 ls s3://$D/$Y/LIST.CHANGED > /dev/null 2>&1
+
+if [ $? -ne 0 ]; then
+	echo "Nothing changed. Quit"
+	exit 0
+fi
 
 ./make_index_chinakb_2017.py
 
