@@ -34,6 +34,8 @@ def get_obj_info(key):
     ''' 
     Custom  caterory
     2017/re -Invent 2017 Breakout Sessions _ Alexa/1 - AWS re -Invent 2017 - State of the Union - Amazon Alexa and Advances in Conversational AI (ALX306).mp4"
+    2017/re -Invent 2017 Launchpad Live Streams on twitch.tv_aws/63 - AWS re -Invent Launchpad 2017 - Customer Spotlight - Cloud Conformit.mp4
+    2017/re -Invent 2017 Launchpad Live Streams on twitch.tv_aws/63 - AWS re -Invent Launchpad 2017 - Customer Spotlight - Cloud Conformit.mp4
     '''
     info = {}
 
@@ -49,13 +51,14 @@ def get_obj_info(key):
     # Keynote tags
     if 'AWS re -Invent 2017 Keynote' in key:
         info['category'] = 'Keynotes' 
+    elif 'Invent 2017 Launchpad Live Streams' in key:
+        info['category'] = 'Launchpad Live Streams' 
     else:
         info['category'] = sections[1].split('_')[-1]
 
     info['name'] = sections[2]
 
     return info
-    
 
 def get_link(bucket_name, key_name):
     '''
