@@ -22,8 +22,16 @@ fi
 
 ./make_index_chinakb_2017.py
 
+N=`grep -c 'A href' ${TD}`
+
 cp index.html.head $INDEX
+
+echo "Last update time: `date '+%Y/%m/%d %T'`  Total Video Number: $N" >> $INDEX
+
+cat index.html.head.part2 >> $INDEX
+
 cat ${TD} >> $INDEX
+
 cat index.html.tail >> $INDEX
 
 [ -f $INDEX ] && aws --profile $PROFILE s3 cp $INDEX s3://$D
@@ -36,6 +44,7 @@ for KEY in ${PUBLIC_KEYS}; do
 	aws --profile $PROFILE s3api put-object-acl --bucket $D --key $KEY --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 done
 
-
+# Delete tag
+aws --profile $PROFILE s3 rm s3://$D/$Y/LIST.CHANGED
 
 exit 0

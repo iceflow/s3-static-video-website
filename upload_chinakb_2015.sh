@@ -33,3 +33,8 @@ PUBLIC_KEYS="$INDEX js/bootstrap.js js/bootstrap.min.js js/npm.js fonts/glyphico
 for KEY in ${PUBLIC_KEYS}; do
 	aws --profile $PROFILE s3api put-object-acl --bucket $D --key $KEY --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 done
+
+# Delete tag
+aws --profile $PROFILE s3 rm s3://$D/$Y/LIST.CHANGED
+
+exit 0
