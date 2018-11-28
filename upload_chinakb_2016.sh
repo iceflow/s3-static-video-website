@@ -23,6 +23,7 @@ fi
 ./make_index_chinakb_2016.py
 
 cp index.html.head $INDEX
+cat index.html.head.part2 >> $INDEX
 cat ${TD} >> $INDEX
 cat index.html.tail >> $INDEX
 
